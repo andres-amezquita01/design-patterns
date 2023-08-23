@@ -1,29 +1,19 @@
 package tests;
 import builders.CarBuilder;
 import builders.ManualBuilder;
-import builders.TruckBuilder;
 import director.Director;
 import domain.car.Car;
 import domain.car.Manual;
-import domain.car.Truck;
 
 /**
  * Demo class. Everything comes together here.
  */
-public class Demo {
+public class TestBuildSportCar {
 
     public static void main(String[] args) {
         Director director = new Director();
-
-        // Director gets the concrete builder object from the client
-        // (application code). That's because application knows better which
-        // builder to use to get a specific product.
         CarBuilder builder = new CarBuilder();
         director.constructSportsCar(builder);
-
-        // The final product is often retrieved from a builder object, since
-        // Director is not aware and not dependent on concrete builders and
-        // products.
         Car car = builder.getResult();
         System.out.println("Car built:\n" + car.getCarType());
 
